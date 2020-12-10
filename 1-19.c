@@ -7,8 +7,8 @@ void reverse(char s[]);
 
 
 
-char line[MAXLINE];
-char longest[MAXLINE];
+
+
 
 
 /* Ei toimi oikein. Jos input 15 merkkiä tai yli, niin laittaa 0 tai ?
@@ -17,6 +17,8 @@ ensimmäiseksi merkiksi. Ei aavistustakaan, että miksi. Pitää selvittää */
 
 int main (void) {
 
+char line[MAXLINE];
+char longest[MAXLINE];
 
 	getLine(line, MAXLINE);
 
@@ -51,7 +53,6 @@ int getLine(char s[], int lim) {
 	}
 
 
-	i++;
 	s[i] = '\0';
 	return i;
 }
@@ -64,11 +65,14 @@ void reverse(char s[]) {
 		;
 	}
 
-	char tmp[i + 2];
 
-	tmp[i + 1] = '\0';
 
-	while(i > 0) {
+	char tmp[i + 1];
+
+	tmp[i] = '\0';
+	i--;
+
+	while(i >= 0) {
 		tmp[i] = s[a];
 		i--;
 		a++;
