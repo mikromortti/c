@@ -16,7 +16,7 @@ for(;;) {
 	if(i == 0) {
 		break;
 	}
-	detab(line, TABLENGTH);
+	entab(line, TABLENGTH);
 }
 
 
