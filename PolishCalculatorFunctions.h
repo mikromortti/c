@@ -50,9 +50,8 @@ void ungetch(int c) {
 
 
 int getop(char s[]) {
-	int i, c;
+	int i, c, tmp;
 
-	int neg = 0;
 
 	while ((s[0] = c = getch()) == ' ' || c == '\t') {
 		;
@@ -60,25 +59,33 @@ int getop(char s[]) {
 
 	s[1] = '\0';
 	if (!isdigit(c) && c != '.') {
-		if(c == '-') {
-			c = getch();
-			if(isdigit(c)) {
-				neg = 1;
-			}
-			ungetch(c);
-		}
-		if(neg == 0) {
+
+		if(c != '-') {
 			return c;			
+		} else {
+			tmp = getch();
+			ungetch(tmp);
+
+			if(!isdigit(tmp)) {
+				return c;
+			}
+
 		}
+	
 
 	}
 
 	i = 0;
 
-
+	if(c == '-') {
+		s[i] = '-';
+		i++;
+		c = getch();
+	}
 
 	if (isdigit(c)) {
 
+		s[i] = c;
 		while (isdigit(s[++i] = c = getch())) {
 			;
 		}
@@ -95,9 +102,19 @@ int getop(char s[]) {
 		ungetch(c);
 	}
 
+
 		return NUMBER;		
 	
 
+
+}
+
+void printTop(void) {
+	if(val > 0) {
+		printf("%lf\n", val[sp]);
+	} else {
+		printf("stack empty\n");
+	}
 
 }
 

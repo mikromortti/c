@@ -10,7 +10,6 @@ int main(void) {
 	char s[MAXOP];
 
 
-
 	while ((type = getop(s)) != EOF) {
 
 
@@ -49,6 +48,11 @@ int main(void) {
 			break;		
 
 		}
+
 	}
+
+
+
 	return 0;
+
 }
